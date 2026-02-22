@@ -34,7 +34,14 @@ CREATE TABLE vote (
 );
 
 INSERT INTO candidate (name) VALUES
-    ('Alice'),
-    ('Bob'),
-    ('Charlie'
-);
+                                ('Alice'),
+                                ('Bob'),
+                                ('Charlie');
+
+INSERT INTO voter (name) VALUES
+                                ('Voter1'),
+                                ('Voter2'),
+                                ('Voter3'),
+                                ('Voter4'),
+                                ('Voter5'),
+                                ('Voter6');
