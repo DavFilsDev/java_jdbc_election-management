@@ -17,5 +17,9 @@ public class Main {
         System.out.println("\n=== Q2 - Votes by Type ===");
         List<VoteTypeCount> voteTypeCounts = dataRetriever.countVotesByType();
         System.out.println(voteTypeCounts);
+
+        System.out.println("\n=== Q3 Valid Votes by Candidate ===");
+        List<CandidateVoteCount> validVotes = dataRetriever.countValidVotesByCandidate();
+        System.out.println(validVotes);
     }
 }
