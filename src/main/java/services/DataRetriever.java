@@ -116,4 +116,27 @@ public class DataRetriever {
 
         return null;
     }
+
+    // Q5 - Turnout rate
+    public double computeTurnoutRate() {
+
+        String sql = """
+        SELECT COUNT(DISTINCT voter_id) * 100.0 / (SELECT COUNT(*) FROM voter) AS turnout_rate
+        FROM vote;
+        """;
+
+        try (Connection conn = dbConnection.getDBConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getDouble("turnout_rate");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0.0;
+    }
 }
