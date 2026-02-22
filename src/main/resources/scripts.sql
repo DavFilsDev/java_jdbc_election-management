@@ -13,3 +13,22 @@ alter default privileges in schema public
 
 alter default privileges in schema public
       grant usage, select, update on sequences to  election_management_db_manager;
+
+CREATE TABLE candidate (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE voter (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TYPE vote_type AS ENUM('VALID', 'BLANK', 'NULL');
+
+CREATE TABLE vote (
+    id SERIAL PRIMARY KEY,
+    candidate_id INT REFERENCES candidate(id),
+    voter_id INT NOT NULL REFERENCES voter(id),
+    vote_type vote_type NOT NULL
+);
