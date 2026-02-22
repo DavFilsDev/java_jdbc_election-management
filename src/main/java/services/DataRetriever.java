@@ -86,4 +86,34 @@ public class DataRetriever {
 
         return results;
     }
+
+    // Q4 - Global vote summary in one row
+    public VoteSummary computeVoteSummary() {
+
+        String sql = """
+        SELECT
+            COUNT(CASE WHEN vote_type = 'VALID' THEN 1 END) AS valid_count,
+            COUNT(CASE WHEN vote_type = 'BLANK' THEN 1 END) AS blank_count,
+            COUNT(CASE WHEN vote_type = 'NULL' THEN 1 END)  AS null_count
+        FROM vote;
+        """;
+
+        try (Connection conn = dbConnection.getDBConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                long valid = rs.getLong("valid_count");
+                long blank = rs.getLong("blank_count");
+                long nul   = rs.getLong("null_count");
+
+                return new VoteSummary(valid, blank, nul);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
