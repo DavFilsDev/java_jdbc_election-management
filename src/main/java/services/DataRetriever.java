@@ -1,10 +1,13 @@
 package services;
 
 import db.DBConnection;
+import models.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataRetriever {
 
@@ -28,5 +31,28 @@ public class DataRetriever {
         }
 
         return totalVotes;
+    }
+
+    // Q2: Count votes by type
+    public List<VoteTypeCount> countVotesByType() {
+
+        String sql = "SELECT vote_type, COUNT(*) FROM vote GROUP BY vote_type ORDER BY vote_type";
+        List<VoteTypeCount> results = new ArrayList<>();
+
+        try (Connection conn = dbConnection.getDBConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                String type = rs.getString(1);
+                long count = rs.getLong(2);
+                results.add(new VoteTypeCount(type, count));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return results;
     }
 }
