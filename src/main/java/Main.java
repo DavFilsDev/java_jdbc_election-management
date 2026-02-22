@@ -18,8 +18,14 @@ public class Main {
         List<VoteTypeCount> voteTypeCounts = dataRetriever.countVotesByType();
         System.out.println(voteTypeCounts);
 
+        // Q3
         System.out.println("\n=== Q3 Valid Votes by Candidate ===");
         List<CandidateVoteCount> validVotes = dataRetriever.countValidVotesByCandidate();
         System.out.println(validVotes);
+
+        // Q4
+        System.out.println("\n=== Q4 Global Vote Summary ===");
+        VoteSummary summary = dataRetriever.computeVoteSummary();
+        System.out.println(summary);
     }
 }
