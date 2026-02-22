@@ -32,5 +32,10 @@ public class Main {
         System.out.println("\n Q5: Turnout Rate");
         double turnout = dataRetriever.computeTurnoutRate();
         System.out.println("Turnout Rate = " + turnout + "%");
+
+        // Q6
+        System.out.println("\n=== Q6 Election Winner ===");
+        ElectionResult winner = dataRetriever.findWinner();
+        System.out.println(winner);
     }
 }
