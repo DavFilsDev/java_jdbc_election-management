@@ -13,7 +13,6 @@ public class DataRetriever {
 
     private final DBConnection dbConnection = new DBConnection();
 
-    // Q1: Count all votes (push-down processing)
     public long countAllVotes() {
         String sql = "SELECT COUNT(*) FROM vote";
         long totalVotes = 0;
