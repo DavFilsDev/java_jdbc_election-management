@@ -9,8 +9,7 @@ public class Main {
 
         DataRetriever dataRetriever = new DataRetriever();
 
-        long totalVote = dataRetriever.countAllVotes();
-        System.out.println("totalVote=" + totalVote);
+        System.out.println("totalVote=" + dataRetriever.countAllVotes());
 
         System.out.println("\n Q2: Votes by Type");
         List<VoteTypeCount> voteTypeCounts = dataRetriever.countVotesByType();
