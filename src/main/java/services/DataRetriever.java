@@ -84,7 +84,6 @@ public class DataRetriever {
         return results;
     }
 
-    // Q4 - Global vote summary in one row
     public VoteSummary computeVoteSummary() {
 
         String sql = """
