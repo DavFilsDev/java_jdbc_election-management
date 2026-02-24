@@ -9,6 +9,7 @@ public class Main {
 
         DataRetriever dataRetriever = new DataRetriever();
 
+        System.out.println("\n Q1: count all votes");
         System.out.println("totalVote=" + dataRetriever.countAllVotes());
 
         System.out.println("\n Q2: Votes by Type");

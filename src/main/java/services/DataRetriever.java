@@ -32,7 +32,6 @@ public class DataRetriever {
         return totalVotes;
     }
 
-    // Q2: Count votes by type
     public List<VoteTypeCount> countVotesByType() {
 
         String sql = "SELECT vote_type, COUNT(*) FROM vote GROUP BY vote_type ORDER BY vote_type";
