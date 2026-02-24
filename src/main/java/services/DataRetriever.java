@@ -135,7 +135,6 @@ public class DataRetriever {
         return 0.0;
     }
 
-    // Q6 - Find election winner
     public ElectionResult findWinner() {
 
         String sql = """
