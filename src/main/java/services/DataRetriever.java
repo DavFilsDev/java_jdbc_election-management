@@ -54,7 +54,6 @@ public class DataRetriever {
         return results;
     }
 
-    // Q3: Count valid votes per candidate
     public List<CandidateVoteCount> countValidVotesByCandidate() {
 
         String sql = """
