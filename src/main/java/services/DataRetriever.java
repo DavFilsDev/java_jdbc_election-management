@@ -113,7 +113,6 @@ public class DataRetriever {
         return null;
     }
 
-    // Q5 - Turnout rate
     public double computeTurnoutRate() {
 
         String sql = """
