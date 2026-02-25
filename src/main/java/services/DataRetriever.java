@@ -6,6 +6,7 @@ import models.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +26,8 @@ public class DataRetriever {
                 totalVotes = rs.getLong(1);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return totalVotes;
@@ -47,8 +48,8 @@ public class DataRetriever {
                 results.add(new VoteTypeCount(type, count));
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return results;
@@ -77,8 +78,8 @@ public class DataRetriever {
                 results.add(new CandidateVoteCount(name, count));
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return results;
@@ -106,8 +107,8 @@ public class DataRetriever {
                 return new VoteSummary(valid, blank, nul);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return null;
@@ -128,8 +129,8 @@ public class DataRetriever {
                 return rs.getDouble("turnout_rate");
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return 0.0;
@@ -157,8 +158,8 @@ public class DataRetriever {
                 return new ElectionResult(name, count);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return null;
